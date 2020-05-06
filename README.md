@@ -11,13 +11,41 @@
 
 **My project is almost complete and is working fine in my local machine and I have hosted it to github pages as well.**
 
-**But the problem I faced,seems immpossible to me now,to resolve.**
+**The problem is that I wrote a python script to convert jupyter notebook to static index.html in the root folder and it works fine on my local machine.Basically my jupyter notebook takes data from the API source and analyzes it to display useful information,but GitHub pages cannot host jupyter notebooks so the script converts notebook to index.html file and saves it directly to root directory (Idea is to make index.html serve as the home page for GitHub pages) but when I made a workflow file to serve the purpose and when it executed something unexpected happened.**
 
-**I will provide my project's GithubRepo at the last. If  someone has knowledge about Github Actions and jupyter notebooks then please help me,I have wasted quite a long time figuring out by myself.**
+**Below is My Workflow file run.yml located in .github/workflows/run.yml**
 
-**The problem is that I wrote a python script to convert jupyter notebook to static .html in the root folder it it works fine on my local machine,my jupyter notebook takes data from the api source and analyzes it to display useful information,but github pages cannot host jupyter notebooks so the script converts notebook to index.html file and saves it directly to root directory but I don't have any idea how to setup github actions workflow to run the script after fixed interval of time and update the static index.html file according to the updated data.**
+```yml
+name: Update index.html
 
-**I request if someone can help me resolve this issue then please help,I have exhausted my time and energy in reading and implementing from Github Actions documentations and tutorials,but nothing worked.**
+on: 
+  schedule: 
+    - cron:  '* * * * *'
 
-**So basically I am  to asking write a workflow.yml file aacording to my needs and explain it to me.**
+jobs: 
+  run:
+    runs-on: windows-latest
 
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        dir
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        python update.py
+        dir
+```
+
+**NOTE: I have Used dir commands to see where the index.html file is getting stored.**
+
+[One]('one.PNG')
+**Output of first dir command**
+[Two]('two.PNG')
+**Output of second dir command**
+
+**Seems like my script (update.py) is working fine but instead of saving index.html to the root directory of my Github Repo it is saving it somewhere else. I need help to make changes in my code to make index.html file to be saved on my GitHub repo as it will serve as the home page for my Github Pages.**
