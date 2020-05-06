@@ -1,4 +1,1 @@
-pandas
-requests
-matplotlib
-notebook
+nbconvert
