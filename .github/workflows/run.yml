@@ -3,8 +3,8 @@ name: Update index.html
 on: 
   schedule: 
     - cron:  '*/* * * * *'
-  branches:
-    - master
+    branches:
+      - master
 
 jobs: 
   run:
