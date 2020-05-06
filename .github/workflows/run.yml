@@ -2,7 +2,7 @@ name: Update index.html
 
 on: 
   schedule: 
-    - cron:  '*/* * * * *'
+    - cron:  '* * * * * *'
 
 jobs: 
   run:
