@@ -43,9 +43,9 @@ jobs:
 
 **NOTE: I have Used dir commands to see where the index.html file is getting stored.**
 
-![One]('one.PNG')
+![One](one.PNG)
 **Output of first dir command**
-![Two]('two.PNG')
+![Two](two.PNG)
 **Output of second dir command**
 
 **Seems like my script (update.py) is working fine but instead of saving index.html to the root directory of my Github Repo it is saving it somewhere else. I need help to make changes in my code to make index.html file to be saved on my GitHub repo as it will serve as the home page for my Github Pages.**
