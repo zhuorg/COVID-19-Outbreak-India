@@ -1,8 +1,7 @@
 name: Update index.html
 
 on: 
-  schedule: 
-    - cron:  '* * * * *'
+  push:
 
 jobs: 
   run:
@@ -21,3 +20,13 @@ jobs:
         pip install -r requirements.txt
         python update.py
         dir
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
+        git commit -m "Add changes" -a
+        git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
+      env:
+        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+        USERNAME: github-actions
