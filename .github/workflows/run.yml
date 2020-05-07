@@ -1,7 +1,6 @@
 name: Update index.html
 
-on: 
-  push:
+on:   push
 
 jobs: 
   run:
