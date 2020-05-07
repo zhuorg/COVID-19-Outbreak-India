@@ -19,6 +19,11 @@ jobs:
         pip install -r requirements.txt
         python update.py
         dir
+   # - name: check changes
+   #   id: clean
+    #  run: | 
+   #     clean=$(git diff-index --quiet HEAD)
+        
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
@@ -27,6 +32,7 @@ jobs:
         echo $clean
         git add --all
         git commit -m "Add changes" -a
+      shell: bash
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
