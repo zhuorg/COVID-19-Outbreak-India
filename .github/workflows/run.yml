@@ -23,6 +23,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
+        clean=$(git diff-index --quiet HEAD)
+        echo $clean
         git add --all
         git commit -m "Add changes" -a
     - name: Push changes
